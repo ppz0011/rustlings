@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-03 16:52:29
+ * @FilePath: \rustlings\exercises\14_generics\generics1.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // `Vec<T>` is generic over the type `T`. In most cases, the compiler is able to
 // infer `T`, for example after pushing a value with a concrete type to the vector.
 // But in this exercise, the compiler needs some help through a type annotation.
@@ -6,7 +14,7 @@ fn main() {
     // TODO: Fix the compiler error by annotating the type of the vector
     // `Vec<T>`. Choose `T` as some integer type that can be created from
     // `u8` and `i8`.
-    let mut numbers = Vec::new();
+    let mut numbers:Vec<i16>  = Vec::new();
 
     // Don't change the lines below.
     let n1: u8 = 42;

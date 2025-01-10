@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-03 16:20:49
+ * @FilePath: \rustlings\exercises\13_error_handling\errors5.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // This exercise is an altered version of the `errors4` exercise. It uses some
 // concepts that we won't get to until later in the course, like `Box` and the
 // `From` trait. It's not important to understand them in detail right now, but
@@ -48,7 +56,7 @@ impl PositiveNonzeroInteger {
 
 // TODO: Add the correct return type `Result<(), Box<dyn ???>>`. What can we
 // use to describe both errors? Is there a trait which both errors implement?
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
     let pretend_user_input = "42";
     let x: i64 = pretend_user_input.parse()?;
     println!("output={:?}", PositiveNonzeroInteger::new(x)?);

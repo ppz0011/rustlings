@@ -1,13 +1,21 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2024-12-31 20:18:50
+ * @FilePath: \rustlings\exercises\03_if\if3.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 fn animal_habitat(animal: &str) -> &str {
     // TODO: Fix the compiler error in the statement below.
     let identifier = if animal == "crab" {
         1
     } else if animal == "gopher" {
-        2.0
+        2
     } else if animal == "snake" {
         3
     } else {
-        "Unknown"
+        4
     };
 
     // Don't change the expression below!

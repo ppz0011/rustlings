@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-07 20:12:48
+ * @FilePath: \rustlings\exercises\20_threads\threads3.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 use std::{sync::mpsc, thread, time::Duration};
 
 struct Queue {
@@ -17,6 +25,7 @@ impl Queue {
 fn send_tx(q: Queue, tx: mpsc::Sender<u32>) {
     // TODO: We want to send `tx` to both threads. But currently, it is moved
     // into the first thread. How could you solve this problem?
+    let tx_cp = tx.clone();
     thread::spawn(move || {
         for val in q.first_half {
             println!("Sending {val:?}");
@@ -28,7 +37,7 @@ fn send_tx(q: Queue, tx: mpsc::Sender<u32>) {
     thread::spawn(move || {
         for val in q.second_half {
             println!("Sending {val:?}");
-            tx.send(val).unwrap();
+            tx_cp.send(val).unwrap();
             thread::sleep(Duration::from_millis(250));
         }
     });

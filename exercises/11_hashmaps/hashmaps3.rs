@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-02 23:39:08
+ * @FilePath: \rustlings\exercises\11_hashmaps\hashmaps3.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // A list of scores (one per line) of a soccer match is given. Each line is of
 // the form "<team_1_name>,<team_2_name>,<team_1_goals>,<team_2_goals>"
 // Example: "England,France,4,2" (England scored 4 goals, France 2).
@@ -31,6 +39,13 @@ fn build_scores_table(results: &str) -> HashMap<&str, TeamScores> {
         // Keep in mind that goals scored by team 1 will be the number of goals
         // conceded by team 2. Similarly, goals scored by team 2 will be the
         // number of goals conceded by team 1.
+        let team_1_scores = scores.entry(team_1_name).or_default();
+        team_1_scores.goals_scored += team_1_score;
+        team_1_scores.goals_conceded += team_2_score;
+
+        let team_2_scores = scores.entry(team_2_name).or_default();
+        team_2_scores.goals_scored += team_2_score;
+        team_2_scores.goals_conceded += team_1_score;
     }
 
     scores

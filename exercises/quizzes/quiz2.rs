@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-03 00:53:48
+ * @FilePath: \rustlings\exercises\quizzes\quiz2.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // This is a quiz for the following sections:
 // - Strings
 // - Vecs
@@ -27,7 +35,26 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function as described above.
-    // pub fn transformer(input: ???) -> ??? { ??? }
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String> { 
+        let mut output = Vec::new();
+        for (str, com) in input {
+            output.push(process(str, com));
+        }
+        output
+    }
+
+    fn process(mut str: String, com: Command) -> String {
+        match com {
+            Command::Uppercase => str.to_uppercase(),
+            Command::Trim => str.trim().to_owned(),
+            Command::Append(n) => {
+                for _ in 0..n {
+                    str.push_str("bar");
+                }
+                str.to_owned()
+            }
+        }
+    }
 }
 
 fn main() {
@@ -37,7 +64,7 @@ fn main() {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    // use ???;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]

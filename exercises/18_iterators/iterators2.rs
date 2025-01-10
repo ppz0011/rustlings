@@ -1,3 +1,11 @@
+/*
+ * @Author: ppz 2398672726@qq.com
+ * @Date: 2024-12-30 01:35:37
+ * @LastEditors: ppz 2398672726@qq.com
+ * @LastEditTime: 2025-01-05 03:16:03
+ * @FilePath: \rustlings\exercises\18_iterators\iterators2.rs
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 // In this exercise, you'll learn some of the unique advantages that iterators
 // can offer.
 
@@ -7,7 +15,13 @@ fn capitalize_first(input: &str) -> String {
     let mut chars = input.chars();
     match chars.next() {
         None => String::new(),
-        Some(first) => todo!(),
+        Some(first) => {
+            let mut s = first.to_string().to_uppercase();
+            for c in chars {
+                s.push(c);
+            }
+            s
+        }
     }
 }
 
@@ -15,14 +29,22 @@ fn capitalize_first(input: &str) -> String {
 // Return a vector of strings.
 // ["hello", "world"] -> ["Hello", "World"]
 fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
-    // ???
+    let mut re = Vec::new();
+    for word in words {
+        re.push(capitalize_first(word));
+    }
+    re
 }
 
 // TODO: Apply the `capitalize_first` function again to a slice of string
 // slices. Return a single string.
 // ["hello", " ", "world"] -> "Hello World"
 fn capitalize_words_string(words: &[&str]) -> String {
-    // ???
+    let mut re = String::new();
+    for word in words {
+        re.push_str(&capitalize_first(word));
+    }
+    re
 }
 
 fn main() {
